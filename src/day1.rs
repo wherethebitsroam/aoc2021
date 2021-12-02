@@ -8,7 +8,7 @@ pub struct Day1 {
 
 impl Day for Day1 {
     fn new<P: AsRef<Path>>(path: P) -> Self {
-        Day1 {
+        Self {
             v: util::read_input(path).expect("read input"),
         }
     }

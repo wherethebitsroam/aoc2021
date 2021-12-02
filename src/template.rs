@@ -6,7 +6,7 @@ pub struct DayX {}
 
 impl Day for DayX {
     fn new<P: AsRef<Path>>(path: P) -> Self {
-        DayX {}
+        Self {}
     }
 
     fn part1(&self) {

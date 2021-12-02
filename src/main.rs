@@ -1,6 +1,7 @@
 use std::path::Path;
 
 mod day1;
+mod day2;
 mod util;
 
 pub trait Day {
@@ -10,5 +11,5 @@ pub trait Day {
 }
 
 fn main() {
-    day1::Day1::new("../day1.txt").part2();
+    day2::Day2::new("../day2.txt").part2();
 }
