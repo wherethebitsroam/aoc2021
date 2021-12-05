@@ -87,21 +87,25 @@ impl Day for Day2 {
         }
     }
 
-    fn part1(&self) {
+    fn part1(&self) -> i32 {
         let mut pos = Pos { d: 0, f: 0 };
         for line in self.lines.iter() {
             let dir = Direction::from_line(line);
             pos = pos + dir;
         }
-        println!("d: {}, f: {}, dxf: {}", pos.d, pos.f, pos.d * pos.f);
+        let r = pos.d * pos.f;
+        println!("d: {}, f: {}, dxf: {}", pos.d, pos.f, r);
+        r
     }
 
-    fn part2(&self) {
+    fn part2(&self) -> i32 {
         let mut pos = Pos2 { d: 0, f: 0, aim: 0 };
         for line in self.lines.iter() {
             let dir = Direction::from_line(line);
             pos = pos + dir;
         }
+        let r = pos.d * pos.f;
         println!("d: {}, f: {}, dxf: {}", pos.d, pos.f, pos.d * pos.f);
+        r
     }
 }

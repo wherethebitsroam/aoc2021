@@ -13,7 +13,7 @@ impl Day for Day1 {
         }
     }
 
-    fn part1(&self) {
+    fn part1(&self) -> i32 {
         let v = &self.v;
         let mut increases = 0;
         for i in 1..v.len() {
@@ -22,10 +22,10 @@ impl Day for Day1 {
             }
         }
 
-        println!("increases: {}", increases);
+        increases
     }
 
-    fn part2(&self) {
+    fn part2(&self) -> i32 {
         let v = &self.v;
         let mut increases = 0;
         for i in 3..v.len() {
@@ -36,6 +36,6 @@ impl Day for Day1 {
             }
         }
 
-        println!("increases: {}", increases);
+        increases
     }
 }
