@@ -1,7 +1,6 @@
 use crate::util;
 use crate::Day;
 use std::ops::Add;
-use std::path::Path;
 
 enum Direction {
     Forward(i32),
@@ -81,13 +80,13 @@ pub struct Day2 {
 }
 
 impl Day for Day2 {
-    fn new<P: AsRef<Path>>(path: P) -> Self {
+    fn new(s: &str) -> Self {
         Self {
-            lines: util::read_lines(path).expect("bad input"),
+            lines: util::read_lines(s),
         }
     }
 
-    fn part1(&self) -> i32 {
+    fn part1(&self) -> usize {
         let mut pos = Pos { d: 0, f: 0 };
         for line in self.lines.iter() {
             let dir = Direction::from_line(line);
@@ -95,10 +94,10 @@ impl Day for Day2 {
         }
         let r = pos.d * pos.f;
         println!("d: {}, f: {}, dxf: {}", pos.d, pos.f, r);
-        r
+        r as usize
     }
 
-    fn part2(&self) -> i32 {
+    fn part2(&self) -> usize {
         let mut pos = Pos2 { d: 0, f: 0, aim: 0 };
         for line in self.lines.iter() {
             let dir = Direction::from_line(line);
@@ -106,6 +105,6 @@ impl Day for Day2 {
         }
         let r = pos.d * pos.f;
         println!("d: {}, f: {}, dxf: {}", pos.d, pos.f, pos.d * pos.f);
-        r
+        r as usize
     }
 }

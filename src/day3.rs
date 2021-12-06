@@ -1,19 +1,18 @@
 use crate::util;
 use crate::Day;
-use std::path::Path;
 
 pub struct Day3 {
     lines: Vec<String>,
 }
 
 impl Day for Day3 {
-    fn new<P: AsRef<Path>>(path: P) -> Self {
+    fn new(s: &str) -> Self {
         Self {
-            lines: util::read_lines(path).expect("bad input"),
+            lines: util::read_lines(s),
         }
     }
 
-    fn part1(&self) -> i32 {
+    fn part1(&self) -> usize {
         let l = self.lines.len() as u32 / 2;
         let x = self
             .lines
@@ -46,10 +45,10 @@ impl Day for Day3 {
             gamma * epsilon
         );
 
-        (gamma * epsilon) as i32
+        (gamma * epsilon) as usize
     }
 
-    fn part2(&self) -> i32 {
+    fn part2(&self) -> usize {
         let x: Vec<Vec<_>> = self
             .lines
             .iter()
@@ -81,7 +80,7 @@ impl Day for Day3 {
         let oxy_value = binary_to_u32(&oxy[0]);
         let co2_value = binary_to_u32(&co2[0]);
 
-        (oxy_value * co2_value) as i32
+        (oxy_value * co2_value) as usize
     }
 }
 

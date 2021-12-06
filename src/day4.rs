@@ -1,7 +1,6 @@
 use crate::util;
 use crate::Day;
 use std::fmt::Debug;
-use std::path::Path;
 
 const WINNERS: [u32; 10] = [
     // rows
@@ -89,19 +88,19 @@ pub struct Day4 {
 impl Day4 {}
 
 impl Day for Day4 {
-    fn new<P: AsRef<Path>>(path: P) -> Self {
-        let lines = util::read_lines(path).expect("bad input");
+    fn new(s: &str) -> Self {
+        let lines = util::read_lines(s);
         Self { lines }
     }
 
-    fn part1(&self) -> i32 {
+    fn part1(&self) -> usize {
         let (draw, mut boards) = parse(&self.lines);
         for v in draw {
             for b in boards.iter_mut() {
                 b.mark(v);
                 if b.has_won() {
                     let unchecked = b.sum_unchecked();
-                    return unchecked * v;
+                    return (unchecked * v) as usize;
                 }
             }
         }
@@ -109,7 +108,7 @@ impl Day for Day4 {
         0
     }
 
-    fn part2(&self) -> i32 {
+    fn part2(&self) -> usize {
         let (draw, mut boards) = parse(&self.lines);
         let mut remaining: Vec<_> = (0..boards.len()).collect();
         for v in draw {
@@ -118,7 +117,7 @@ impl Day for Day4 {
             }
             if remaining.len() == 1 && boards[remaining[0]].has_won() {
                 let unchecked = boards[remaining[0]].sum_unchecked();
-                return unchecked * v;
+                return (unchecked * v) as usize;
             }
             // remove the completed boards from remaining
             remaining = remaining

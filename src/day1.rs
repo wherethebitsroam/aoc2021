@@ -1,19 +1,18 @@
 use crate::util;
 use crate::Day;
-use std::path::Path;
 
 pub struct Day1 {
     v: Vec<i32>,
 }
 
 impl Day for Day1 {
-    fn new<P: AsRef<Path>>(path: P) -> Self {
+    fn new(s: &str) -> Self {
         Self {
-            v: util::read_input(path).expect("read input"),
+            v: util::read_input(s),
         }
     }
 
-    fn part1(&self) -> i32 {
+    fn part1(&self) -> usize {
         let v = &self.v;
         let mut increases = 0;
         for i in 1..v.len() {
@@ -25,7 +24,7 @@ impl Day for Day1 {
         increases
     }
 
-    fn part2(&self) -> i32 {
+    fn part2(&self) -> usize {
         let v = &self.v;
         let mut increases = 0;
         for i in 3..v.len() {

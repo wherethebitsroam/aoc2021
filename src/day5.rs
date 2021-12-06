@@ -1,7 +1,6 @@
 use crate::util;
 use crate::Day;
 use std::collections::HashMap;
-use std::path::Path;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 struct Point {
@@ -40,12 +39,12 @@ impl Day5 {
 }
 
 impl Day for Day5 {
-    fn new<P: AsRef<Path>>(path: P) -> Self {
-        let lines = util::read_lines(path).expect("bad input");
+    fn new(s: &str) -> Self {
+        let lines = util::read_lines(s);
         Self::parse(&lines)
     }
 
-    fn part1(&self) -> i32 {
+    fn part1(&self) -> usize {
         let points = self.points.iter().filter(|(a, b)| a.x == b.x || a.y == b.y);
         let mut map: HashMap<Point, i32> = HashMap::new();
 
@@ -78,7 +77,7 @@ impl Day for Day5 {
         overlap
     }
 
-    fn part2(&self) -> i32 {
+    fn part2(&self) -> usize {
         let mut map: HashMap<Point, i32> = HashMap::new();
 
         for (p1, p2) in self.points.iter() {
