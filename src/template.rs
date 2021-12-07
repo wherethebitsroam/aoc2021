@@ -1,22 +1,17 @@
-use crate::util;
 use crate::Day;
-use std::path::Path;
 
-pub struct DayX {
-    lines: Vec<String>,
-}
+pub struct DayX {}
 
 impl Day for DayX {
-    fn new<P: AsRef<Path>>(path: P) -> Self {
-        let lines = util::read_lines(path).expect("bad input");
-        Self { lines }
+    fn new(s: &str) -> Self {
+        Self {}
     }
 
-    fn part1(&self) -> i32 {
+    fn part1(&self) -> usize {
         todo!()
     }
 
-    fn part2(&self) -> i32 {
+    fn part2(&self) -> usize {
         todo!()
     }
 }
@@ -29,7 +24,5 @@ mod tests {
     const INPUT: &str = "";
 
     #[test]
-    fn test_parse() {
-        let lines: Vec<String> = INPUT.split('\n').map(|s| s.to_owned()).collect();
-    }
+    fn test_parse() {}
 }

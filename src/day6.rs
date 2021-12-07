@@ -22,8 +22,7 @@ impl Day for Day6 {
             counter[(i + 7) % 9] += v;
         }
 
-        let count: usize = counter.iter().sum();
-        count
+        counter.iter().sum()
     }
 
     fn part2(&self) -> usize {
@@ -34,8 +33,7 @@ impl Day for Day6 {
             counter[(i + 7) % 9] += v;
         }
 
-        let count: usize = counter.iter().sum();
-        count
+        counter.iter().sum()
     }
 }
 
