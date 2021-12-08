@@ -8,6 +8,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 mod util;
 
 pub trait Day {
@@ -17,10 +18,10 @@ pub trait Day {
 }
 
 fn main() {
-    let mut f = File::open("../day7.txt").expect("file not found");
+    let mut f = File::open("../day8.txt").expect("file not found");
     let mut buffer = String::new();
     f.read_to_string(&mut buffer).expect("could not read file");
 
-    let result = day7::Day7::new(&buffer).part2();
+    let result = day8::Day8::new(&buffer).part2();
     println!("result: {}", result);
 }
