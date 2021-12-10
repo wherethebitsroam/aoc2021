@@ -64,19 +64,16 @@ impl Line {
     }
 
     fn solve(&self) -> usize {
-        let lookup: HashMap<&str, usize> = HashMap::from([
-            ("abcefg", 0),
-            ("cf", 1),
-            ("acdeg", 2),
-            ("acdfg", 3),
-            ("bcdf", 4),
-            ("abdfg", 5),
-            ("abdefg", 6),
-            ("acf", 7),
-            ("abcdefg", 8),
-            ("abcdfg", 9),
-        ]);
+        // we can determine which character was supposed to be represented
+        // based on the count and whether is is part of four
+        // counts: actual letter
+        // 4: e
+        // 6: b
+        // 7: d or g -> d in 4
+        // 8: a or c -> c in 4
+        // 9: f
 
+        // get the letters in four in the input set
         let four: Vec<char> = self
             .input
             .iter()
@@ -85,6 +82,7 @@ impl Line {
             .chars()
             .collect();
 
+        // get the counts for each letter in the input
         let mut counts: HashMap<char, usize> = HashMap::new();
         for s in self.input.iter() {
             for c in s.chars() {
@@ -92,6 +90,7 @@ impl Line {
             }
         }
 
+        // work out the translation table for input set to actual
         let mut translate: HashMap<char, char> = HashMap::new();
         for (k, v) in counts.iter() {
             match v {
@@ -132,6 +131,19 @@ impl Line {
             .collect();
 
         // map the resulting strings to digits
+        let lookup: HashMap<&str, usize> = HashMap::from([
+            ("abcefg", 0),
+            ("cf", 1),
+            ("acdeg", 2),
+            ("acdfg", 3),
+            ("bcdf", 4),
+            ("abdfg", 5),
+            ("abdefg", 6),
+            ("acf", 7),
+            ("abcdefg", 8),
+            ("abcdfg", 9),
+        ]);
+
         let digits: Vec<usize> = translated
             .iter()
             .map(|s| *lookup.get(s.as_str()).unwrap())
